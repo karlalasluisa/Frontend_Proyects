@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Paytone+One&family=Young+Serif&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Paytone+One&family=Young+Serif&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Product preview card component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color:hsl(30, 38%, 92%);
+    }
+    .card{
+      display: flex;
+      flex-direction:row;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+
+    }
+    .card__content, .card__img{
+      width: 50%;
+      box-sizing: border-box; /* Incluye el padding en el ancho total */
+    }
+    .card__img{
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card__content{
+      padding: 20px;
+    }
+    .card__subtitle, .card__description{
+      color: hsl(228, 12%, 48%);
+    }
+
+    .card__subtitle{
+      font-size: 0.6rem;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .card__title{
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: hsl(212, 21%, 14%);
+      font-family: 'Fraunces', serif;
+    }
+    .card__description{
+      font-size: 0.6rem;
+      margin-bottom: 0px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .card__prices{
+      display: flex;
+      align-items: center;
+
+      h3{
+        font-size: 1.5rem;
+        font-weight: 700;
+        color:hsl(158, 36%, 37%);
+        font-family: 'Fraunces', serif; 
+      }
+      span{
+        font-size: 0.6rem;
+        text-decoration: line-through;
+        margin-left: 10px;
+        color: hsl(228, 12%, 48%);
+      }
+    }
+    button{
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color:hsl(158, 36%, 37%);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0px;
+    }
+    button img{
+      margin-right: 10px;
+      width: 13px;
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 600px) {
+      .card {
+        flex-direction: column;
+        width: 100%;
+        max-width: 240px;
+      }
+      .card__img, .card__content {
+        width: 100%;
+        
+      }
+      .card__img img {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <div class="card">
+      <div class="card__img">
+        <img src="./images/image-product-desktop.jpg" alt="Perfume bottle" class="desktop-img">
+        <img src="./images/image-product-mobile.jpg" alt="Perfume bottle" class="mobile-img" style="display: none;">
+      </div>
+      <div class="card__content">
+
+        <div class="card__subtitle"> Perfume</div>
+        <div class="card__title"> Gabrielle Essence Eau De Parfum </div>
+        <div class="card__description">
+          A floral, solar and voluptuous interpretation composed by Olivier Polge, 
+          Perfumer-Creator for the House of CHANEL.        
+        </div>
+        <div class="card__prices">
+          <h3>$149.99</h3>
+          <span>$169.99</span>
+        </div>
+        <div class="card__button">
+          <button>
+            <img src="./images/icon-cart.svg" alt="Cart icon">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // JavaScript to switch images based on screen size
+    function switchImages() {
+      const desktopImg = document.querySelector('.desktop-img');
+      const mobileImg = document.querySelector('.mobile-img');
+      if (window.innerWidth <= 600) {
+        desktopImg.style.display = 'none';
+        mobileImg.style.display = 'block';
+      } else {
+        desktopImg.style.display = 'block';
+        mobileImg.style.display = 'none';
+      }
+    }
+
+    window.addEventListener('resize', switchImages);
+    window.addEventListener('load', switchImages);
+  </script>
+</body>
+</html>
