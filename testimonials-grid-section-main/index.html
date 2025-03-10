@@ -16,8 +16,11 @@
   <style>
     body{
       font-family: 'Roboto Condensed';
-      margin: 0;
+      margin-top:100px;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      
     }
     .container__cards {
       display: grid;
@@ -26,11 +29,10 @@
       grid-template-rows: auto auto;
       /* 2 filas */
       gap: 10px;
-      justify-items: center;
+      justify-content: center;
       align-items: center;
-      max-width: 900px;
+
       width: 100%;
-      margin: 0 auto;
       /* Centra el contenedor horizontalmente */
     }
 
@@ -80,6 +82,16 @@
       display: flex;
       flex-direction: column;
 
+    }
+    
+    /*  Para móviles*/
+    @media (max-width: 600px) {
+      .container__cards {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+      }
+      .card {
+        grid-column: span 1; /* Cada tarjeta ocupa una columna completa */
+      }
     }
   </style>
 </head>
